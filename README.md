@@ -1,15 +1,15 @@
 # Soft Sensor System
 
-A real-time 5x5 capacitive touch matrix sensor with OLED display feedback, featuring optimized performance for fast refresh rates.
+A cost-effective fabric-embedded resistive soft sensor (ceferss) is an expandable touch matrix sensor with OLED display feedback, featuring optimized performance for fast refresh rates. The theoretical maximum grid size with the current hardware is 13x13 (169 cells), but can be expanded further with a GPIO expander.
 
 ## System Architecture
 
-This system implements a **5x5 capacitive touch matrix sensor** with real-time visual feedback, consisting of two main components that communicate over serial:
+This system currently implements a **5x5 capacitive touch matrix sensor** with real-time visual feedback, consisting of two main components that communicate over serial:
 
 ### 1. Pico Controller (`pico_grid.py`) - Hardware Interface Layer
 
 **Core Functionality:**
-- **Matrix Scanning**: Implements efficient row-column scanning of a 5x5 touch grid
+- **Matrix Scanning**: Implements efficient row-column scanning of a touch grid
 - **Pin Configuration**: 
   - Rows (GP2-GP6): Output pins for driving the matrix
   - Columns (GP7-GP11): Input pins with pull-up resistors for reading
