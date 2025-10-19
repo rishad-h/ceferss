@@ -12,7 +12,7 @@ BAUD_RATE = 115200
 CELL_SIZE = 10
 CELL_GAP = 2
 GRID_COLS = 5
-GRID_ROWS = 5
+GRID_ROWS = 5 # Display a 5x5 grid, ignoring the first row from the pico
 
 GRID_WIDTH = (CELL_SIZE * GRID_COLS) + (CELL_GAP * (GRID_COLS - 1))
 GRID_HEIGHT = (CELL_SIZE * GRID_ROWS) + (CELL_GAP * (GRID_ROWS - 1))
@@ -65,8 +65,10 @@ def main():
                  print(f"Received: {line}")  # Debug output
                  
                  # Ensure the line is not empty and has the correct format
-                 if line and line.count(',') == (GRID_ROWS * GRID_COLS - 1):
-                     new_states = line.split(',')
+                 if line and line.count(',') == (6 * 5 - 1):
+                     # We receive a 6x5 grid, but only process a 5x5 grid
+                     full_grid = line.split(',')
+                     new_states = full_grid[5:] # Skip the first 5 values (row 0)
                      
                      # --- OPTIMIZATION: Only redraw if the state has changed ---
                      if new_states != grid_states:
