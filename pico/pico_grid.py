@@ -8,11 +8,11 @@ import time
 ROW_COUNT = 5
 COL_COUNT = 5
 
-# Row pins (outputs): GP2, GP3, GP4, GP5, GP6
-row_pins = [machine.Pin(i, machine.Pin.OUT) for i in range(2, 7)]
+# Row pins (outputs): GP3, GP4, GP5, GP6, GP2
+row_pins = [machine.Pin(i, machine.Pin.OUT) for i in [3, 4, 5, 6, 2]]
 
-# Column pins (inputs with pull-up): GP7, GP8, GP9, GP10, GP11
-col_pins = [machine.Pin(i, machine.Pin.IN, machine.Pin.PULL_UP) for i in range(7, 12)]
+# Column pins (inputs with pull-up): GP8, GP9, GP10, GP11, GP7
+col_pins = [machine.Pin(i, machine.Pin.IN, machine.Pin.PULL_UP) for i in [8, 9, 10, 11, 7]]
 
 # --- OPTIMIZATION: Store previous state to send data only on change ---
 # Initialize with a state that will trigger the first send
