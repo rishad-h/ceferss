@@ -30,6 +30,13 @@ fi
 
 echo "--> Using hardcoded port: $PORT"
 
+# Reset the Arduino by toggling DTR
+echo "--> Resetting Arduino Nano..."
+python3 -c "import serial; s = serial.Serial('$PORT', 115200); s.setDTR(False); s.close()" 2>/dev/null || true
+sleep 0.5
+python3 -c "import serial; s = serial.Serial('$PORT', 115200); s.setDTR(True); s.close()" 2>/dev/null || true
+sleep 1
+
 echo "--> Compiling and uploading sketch ($SKETCH_PATH) to Nano..."
 # Navigate to the script's directory to find the sketch file
 cd "$(dirname "$0")" || exit
