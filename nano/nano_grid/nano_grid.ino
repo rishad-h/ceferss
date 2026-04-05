@@ -15,6 +15,10 @@ const int TOUCH_THRESHOLD = (4.7 / 5.0) * 1023;
 // array to store grid states grid states (according to size of grid) (1 = no touch, 0 = touch)
 int gridState[ROW_COUNT * COL_COUNT];
 
+// LED blink state
+unsigned long lastLedToggle = 0;
+bool ledState = false;
+
 void setup() {
   // begin serial communication with Raspberry Pi 5
   Serial.begin(115200);
@@ -30,9 +34,20 @@ void setup() {
     pinMode(colPins[i], INPUT);
     digitalWrite(colPins[i], HIGH);
   }
+
+  // set built-in LED as output
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
+  // blink built-in LED at 2 Hz (toggle every 250ms)
+  unsigned long now = millis();
+  if (now - lastLedToggle >= 250) {
+    ledState = !ledState;
+    digitalWrite(LED_BUILTIN, ledState ? HIGH : LOW);
+    lastLedToggle = now;
+  }
+
   String dataString = "";
 
   // scan the matrix

@@ -1,0 +1,6 @@
+cbor2==5.9.0
+luma.core==2.5.3
+luma.oled==3.15.0
+pillow==12.2.0
+pyserial==3.5
+smbus2==0.6.0
