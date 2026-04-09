@@ -1,0 +1,11 @@
+PICO
+rows: 9
+cols: 9
+strip width (in): 0.75
+strip gap (in): 0.5
+
+NANO
+rows: 5
+cols: 5
+strip width (in): 0.85
+strip gap (in): 0.125

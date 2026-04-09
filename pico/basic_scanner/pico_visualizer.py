@@ -95,7 +95,7 @@ def render(grid_states):
         "┌─────────────────────┐",
         "│       Status        │",
         "│                     │",
-        f"│  Active: {active:>3} / {total:<3} │",
+        f"│  Active: {active:>3} / {total:<3}  │",
         "│                     │",
     ]
     bar_len = int((active / total) * 16)
